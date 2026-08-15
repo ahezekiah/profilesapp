@@ -31,7 +31,10 @@ export default function App() {
   useEffect(() => {
     let isMounted = true;
 
-    client.models.UserProfile.list().then(({ data: profiles }) => {
+    client.models.UserProfile.list().then(({ data: profiles, errors }) => {
+      console.log("USER PROFILES:", profiles);
+      console.log("PROFILE ERRORS:", errors);
+
       if (isMounted) {
         setUserProfiles(profiles);
       }
